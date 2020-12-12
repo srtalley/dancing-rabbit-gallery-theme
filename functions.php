@@ -261,9 +261,10 @@ function wl ( $log )  {
 } // end write_log
 
 /**
- * Start a session if one does not already exist
+ * Start a session if one does not already exist. If this is a product or
+ * post category, get the current category id and save it to the session.
  */
-add_action('init', 'dst_start_session');
+add_action('init', 'dst_start_session', 9999);
 function dst_start_session() {
     if(!session_id()) {
         session_start();
@@ -273,29 +274,18 @@ function dst_start_session() {
         if(!isset($_SESSION['product_cat_id'])) {
             $_SESSION['product_cat_id'] = '';
         }
+        if(is_product_category()) {
+            $obj_id = get_queried_object_id();
+            $_SESSION['product_cat_id'] = $obj_id;
+         } else if(is_home()) {
+            $_SESSION['post_cat_id'] = '446';
+         } else if(is_category()) {
+            $obj_id = get_queried_object_id();
+            $_SESSION['post_cat_id'] = $obj_id;
+         }
         session_write_close();
     }
 }
-
-/**
- * If this is a product or post category, get the current category id and save
- * it to the session
- */
-// add_action('wp_head', 'dst_get_current_term');
-
-function dst_get_current_term() {
-
-     if(is_product_category()) {
-        $obj_id = get_queried_object_id();
-        $_SESSION['product_cat_id'] = $obj_id;
-     } else if(is_home()) {
-        $_SESSION['post_cat_id'] = '446';
-     } else if(is_category()) {
-        $obj_id = get_queried_object_id();
-        $_SESSION['post_cat_id'] = $obj_id;
-     }
-}
-
 
 /*
 * Sort Next/Previous Post Links Alphabetically for posts
