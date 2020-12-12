@@ -1,0 +1,250 @@
+/*
+Theme Name: Weston - Child
+Template: themetrust-weston
+Author: Katrina Costedio
+Version: 1.1.6
+Updated: 2020-02-10
+*/
+/* fix a spacing issue */
+.post-type-archive-product.using-vc .site-main {
+    padding: 40px 30px 30px !important
+ }
+ .single-product .content-area {
+     padding-top: 20px;
+ }
+ #middle > #main {
+     padding-top: 0 !important;
+ }
+ #middle > #main > #primary > #main {
+     padding-top: 0 !important;
+ }
+ .single #primary .header-wrap {
+     margin-bottom: 20px;
+ }
+ .archive.tax-product_cat #middle > #primary > #main {
+     padding-top: 50px !important;
+ }
+ .woocommerce span.out-of-stock,
+ .woocommerce-page span.out-of-stock,
+ .widget_ttrust_products span.out-of-stock {
+     position: absolute;
+     z-index: 2;
+     top: 10px !important;
+     left: 10px !important;
+     min-width: 0 !important;
+     min-height: 0 !important;
+     margin: 0 !important;
+     padding: 6px 18px !important;
+     -webkit-border-radius: 3px !important;
+     -moz-border-radius: 3px !important;
+     border-radius: 3px !important;
+     color: #fff !important;
+     background: #ad2828 !important;
+     -webkit-box-shadow: none !important;
+     -moz-box-shadow: none !important;
+     box-shadow: none !important;
+     text-shadow: none !important;
+     font-size: 20px;
+     font-weight: 500!important;
+     line-height: inherit!important;
+ }
+ 
+ .woocommerce ul.products li.product .out-of-stock,
+ .woocommerce-page ul.products li.product .out-of-stock,
+ .widget_ttrust_products li.product .out-of-stock {
+     right: auto !important;
+     left: 10px !important;
+     margin: 0 !important;
+ }
+ 
+ .single article p {
+     font-size: 16px;
+ }
+ .single article img.alignleft,
+ .single article img.alignright {
+     margin-top: 10px;
+     margin-bottom: 10px;
+ }
+ 
+ /* Make the archive page look like the search page */
+ .archive article .entry-header a img {
+     float: left;
+     max-width: 150px;
+     margin: 0 30px 10px 0;
+     display: block;
+ }
+ .archive article h2.entry-title  {
+     font-size: 1.6em !important;
+     text-align: left;
+     margin-bottom: 15px !important;
+ }
+ .archive article .entry-content {
+     max-width: 1200px;
+     margin: 0 auto !important;
+     display: block;
+ }
+ 
+ .archive article {
+     max-width: 830px;
+     border-bottom: 1px solid #e2e2e2;
+     border-bottom-width: 1px;
+     border-bottom-style: solid;
+     border-bottom-color: rgb(226, 226, 226);
+     margin-bottom: 20px;
+     padding: 10px 0 20px;
+     min-height: 180px;
+ }
+ .cart-icon::before {
+     content: "\f07a";
+ }
+ /* Artists Dropdown (works with JS) */
+ .widget .menu-artists-dropdown-container ul.menu {
+     display: none;
+ }
+ .prev_next_buttons {
+     display: flex;
+     flex-direction: row;
+     flex-wrap: wrap;
+     justify-content: space-between;
+     max-width: 1020px !important;
+     margin: 10px auto 30px;
+ }
+ .single .prev_next_buttons {
+     max-width: 1000px !important;
+ }
+ .single .prev_next_buttons { 
+     margin-bottom: 20px;
+ }
+ .prev_next_buttons .previous-button,
+ .prev_next_buttons .next-button {
+     flex: 1 1 50%;
+ }
+ .prev_next_buttons .next-button {
+     text-align: right;
+ }
+ .prev_next_buttons a {
+     -webkit-font-smoothing: antialiased;
+     display: inline-block;
+     background: #2a2a2a !important;
+     color: #fff !important;
+     font-size: 0.75em;
+     padding: 8px 22px 8px !important;
+     font-weight: 700;
+     line-height: 1.8em;
+     text-decoration: none;
+     position: relative;
+     cursor: pointer;
+     margin: 0 3px 0 0;
+     -webkit-appearance: none;
+     text-align: center;
+     transition-property: all;
+     -webkit-transition: 0.2s ease;
+     -moz-transition: 0.2s ease;
+     -o-transition: 0.2s ease;
+     transition: 0.2s ease;
+     text-transform: uppercase;
+     -moz-border-radius: 25px !important;
+     -webkit-border-radius: 25px !important;
+     border-radius: 25px !important;
+     border: none !important;
+     font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+ 
+ }
+ .prev_next_buttons a:hover {
+     opacity: 0.5;
+ }
+ .prev_next_buttons .previous-button a {
+     padding-left: 44px !important;
+ }
+ .prev_next_buttons .previous-button a:before {
+     content: '\f053';
+     display: block;
+     position: absolute;
+     font-size: 20px;
+     top: 8px;
+     left: 15px;
+     font-family: 'FontAwesome';
+ }
+ .prev_next_buttons .next-button a {
+     padding-right: 44px !important;
+ }
+ .prev_next_buttons .next-button a:after {
+     content: '\f054';
+     display: block;
+     position: absolute;
+     font-size: 20px;
+     top: 8px;
+     right: 15px;
+     font-family: 'FontAwesome';
+ }
+ .related.products {
+     padding-top: 10px;
+ }
+ div .yikes-easy-mc-success-message {
+    color: #000000;
+    background: #9ff3fa;
+    padding: 12px;
+    border: 2px solid #25c0cc;
+    font-weight: bold;
+    max-width: 99%;
+}
+ .yikes-mailchimp-container label {
+     font-family: "Open Sans", Arial, Helvetica, sans-serif;
+     font-size: 16px;
+ }
+ .b878cfe8ac-label .yikes-easy-mc-checkbox-label {
+     width: auto;
+     margin-right: 20px;
+ }
+ .b878cfe8ac-label .yikes-easy-mc-checkbox-label input[type="checkbox"] {
+     margin-right: 10px;
+     vertical-align: baseline;
+     top: 4px;
+ }
+ .tdr-submit {
+     background-color: #25c0cc;
+     color: #fff;
+     border-radius: 5px;
+     border:none;
+     transition: all 0.4s ease-out;
+ }
+ .tdr-submit span {
+     font-family: 'Oswald', Arial, Helvetica, sans-serif;
+     font-size: 22px;
+     text-transform: uppercase;
+     font-weight: 600;
+ 
+ }
+ .tdr-submit:hover {
+     background-color: #1fa1ab;
+}
+.yikes-mailchimp-container-1 input[type="email"] {
+    margin-top: 0 !important;
+    padding: 15px !important;
+}
+.yikes-mailchimp-container-1 .empty-label {
+    display: none;
+} 
+ @media only screen and (min-width: 1025px) and (max-width: 1260px) {
+     .logo .site-title img {
+         max-width: 13vw !important;
+     }
+     .main-nav ul a, .main-nav ul li {
+         padding: 0 10px;
+     }
+ }
+ @media only screen and (max-width: 768px) {
+    .yikes-mailchimp-container-1 label.label-inline {
+        width: 100%;
+        padding-right: 0 !important;
+    }
+ }
+ @media only screen and (max-width: 767px) {
+ 
+     .archive article .entry-header a img {
+         float: none;
+         max-width: 100%;
+         margin: 0 0 10px;
+     }
+ 
+ }
