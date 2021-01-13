@@ -12,13 +12,17 @@ $product_availability = $product->get_availability();
 $currency   = get_woocommerce_currency_symbol();
 $hover_color = "#000";
 $sold_sticker = '';
-
+// Add a query arg if necessary
+$product_link = get_the_permalink();
+if(is_product_category()){
+	$product_link = add_query_arg('dr_category', get_queried_object_id(), $product_link);
+}
 ?>
 
 <li class="product small" id="<?php echo $post->ID; ?>">
 	<div class="inside">
 	<div class="thumb-container">
-		<a href="<?php the_permalink(); ?>" rel="bookmark" alt="<?php the_title_attribute(); ?>">
+		<a href="<?php echo $product_link; ?>" rel="bookmark" alt="<?php the_title_attribute(); ?>">
 			
 			<div class="product-thumb">
 				

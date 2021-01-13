@@ -188,7 +188,7 @@ function get_adjacent_post_product( $in_same_cat = false, $excluded_categories =
                 return '';
 
             
-            // see if a category id is set for the product category, but also make sure that
+            // see if a session id is set for the product category, but also make sure that
             // matches an id for the post we're viewing because we could run into a situation 
             // where someone opens a page in one tab, then views another category, but 
             // then goes back to that original page.
@@ -271,6 +271,55 @@ function wl ( $log )  {
 } // end write_log
 
 /**
+ * Start a session if one does not already exist
+ */
+// add_action('init', 'dst_set_cookie', 10);
+// function dst_set_cookie() {
+//     wl('starting session');
+//     if ( ! isset( $_COOKIE['_drg'] ) ) :
+//         setcookie( '_drg', 'post_cat_id', '', '/', $_SERVER['HTTP_HOST'], true, true);
+//         setcookie( '_drg', 'product_cat_id', '', '/', $_SERVER['HTTP_HOST'], true, true);
+//     endif;
+
+    
+// }
+
+/**
+ * If this is a product or post category, get the current category id and save
+ * it to the session
+ */
+// add_action('wp_loaded', 'dst_get_current_term', 9999999);
+
+// function dst_get_current_term() {
+//      if(is_product_category()) {
+//         $obj_id = get_queried_object_id();
+//         setcookie( '_drg_prodcat', $obj_id, time() + 86400, '/', $_SERVER['HTTP_HOST'], true, true);
+
+//      } else if(is_home()) {
+//         $post_cat_id = '446';
+//         setcookie( '_drg_postcat', $post_cat_id, time() + 86400, '/', $_SERVER['HTTP_HOST'], true, true);
+//      } else if(is_category()) {
+//         $obj_id = get_queried_object_id();
+//         setcookie( '_drg_postcat', $obj_id, time() + 86400, '/', $_SERVER['HTTP_HOST'], true, true);
+
+//      }
+
+// }
+// add_filter( 'woocommerce_loop_product_link', 'bbloomer_change_product_permalink_shop', 99, 2 );
+ 
+// function bbloomer_change_product_permalink_shop( $link, $product ) {
+//     wl('in this loop prod ctlink');
+// $this_product_id = $product->get_id();
+//     if(is_product_category()) {
+//         wl('prod');
+//         $link = add_query_arg('pr', get_queried_object_id(), $link);
+//     } else {
+//         wl('no');
+//     }
+//     return $link;
+// }
+
+/**
  * Add filtering for the permalink
  */
 
@@ -283,6 +332,8 @@ function dst_filter_blog_permalink($url, $post, $leavename=false) {
 }
 /*
 * Sort Next/Previous Post Links Alphabetically for posts
+* It may be possible to apply this to the products as well, but 
+* for now we're leaving the product code as is
 */
 
 add_filter('get_next_post_sort',  'filter_next_and_prev_post_sort');
@@ -307,7 +358,7 @@ function navigate_in_same_taxonomy_join($join) {
     global $wpdb, $post;
     // get the category query var
     $post_cat_id = get_query_var( 'dr_sort', '' );
-
+    // if (get_post_type($post) == 'post' && $post_cat_id != '446') {
     if (get_post_type($post) == 'post' && $post_cat_id != '') {
 
         $join = " INNER JOIN $wpdb->term_relationships AS tr ON p.ID = tr.object_id INNER JOIN $wpdb->term_taxonomy tt ON tr.term_taxonomy_id = tt.term_taxonomy_id";
@@ -318,18 +369,21 @@ function navigate_in_same_taxonomy_join($join) {
                 
 
         if(in_array('446', $cat_array)){
-            // if this is the blog category return only blogs
+            wl('part 1');
             $join .= " AND tt.taxonomy = 'category' AND tt.term_id IN (446)";
         } else if($post_cat_id != '') {
-            // if a dr_sort category is specified return those
+            wl('part 2');
             $join .= " AND tt.taxonomy = 'category' AND tt.term_id IN (" . $post_cat_id . ")";
         } else {
-            // return the original join
+            wl('part 3');
+            wl($cat_array);
             return $join;
+            // $join .= " AND tt.taxonomy = 'category' AND tt.term_id IN (" . implode(',', $cat_array) . ")";
         }
 
     }
-
+    wl('join');
+    wl( $join );
     return $join;
 }
 
@@ -341,6 +395,7 @@ function filter_next_and_prev_post_where( $original ) {
     // get the category query var
     $post_cat_id = get_query_var( 'dr_sort', '' );
     
+    // if (get_post_type($post) == 'post' && $post_cat_id  != '446') {
     if (get_post_type($post) == 'post') {
 
         $where = '';
