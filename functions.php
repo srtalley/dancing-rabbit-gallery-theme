@@ -54,7 +54,7 @@ function alphabetize_filter_pre_get_posts( $query ) {
         return $query;
     }
 }
-// add_filter( 'pre_get_posts', 'alphabetize_filter_pre_get_posts' );
+add_filter( 'pre_get_posts', 'alphabetize_filter_pre_get_posts' );
 
 // Get Related Products from only the main categories 
 
